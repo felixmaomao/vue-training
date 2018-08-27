@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 绑定style class模板 -->
+    <div id="example" class="static" v-bind:class="{active:isActive,'text-danger':hasError}">
+        haha
+    </div>
+
+    <!-- 结合计算属性进行复杂绑定 -->
+    <div id="myexample" v-bind:class="classObject">
+        enen
+    </div>
+
+
+
+    <script type="text/javascript">
+        var m = new Vue({
+            el: '#example',
+            data: {
+                isActive: true,
+                hasError: true
+            }
+        });
+
+
+        // 结合计算属性进行复杂绑定 
+        var n = new Vue({
+            el: '#myexample',
+            data: {
+                isActive: true,
+                error: {
+                    value: true,
+                    type: 'fatal'
+                }
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

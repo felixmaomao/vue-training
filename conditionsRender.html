@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <h1 v-if="flag">Yes</h1>
+        <h1 v-else>No</h1>
+    </div>
+
+    <!-- 多条件 -->
+    <div id="app2">
+        <p v-if="type==='@'">A</p>
+        <p v-else-if="type==='B'">B</p>
+        <p v-else-if="type==='C'">C</p>
+        <p v-else>not a b c</p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#example',
+            data: {
+                flag: true
+            }
+        });
+
+        var x = new Vue({
+            el: '#app2',
+            data: {
+                type: 'B'
+            }
+        });
+    </script>
+</body>
+
+
+</html>

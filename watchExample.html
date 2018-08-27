@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <input v-model="price" />
+        <span>{{price}}</span>
+    </div>
+    <script type="text/javascript">
+        var m = new Vue({
+            el: '#example',
+            data: {
+                price: 100
+            }
+        });
+    </script>
+</body>
+
+</html>

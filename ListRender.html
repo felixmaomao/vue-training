@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<!-- 列表格式的渲染 -->
+
+<body>
+    <ul id="example">
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+    </ul>
+
+    <!-- 对一个对象进行v-for输出其属性 -->
+    <!-- 使用v-for的时候最好带上:key -->
+    <ul id="v-for-object">
+        <li v-for="xxx in object" :key="xxx.firstName">
+            {{xxx}}
+        </li>
+    </ul>
+
+    <ul id="v-for-object2">
+        <li v-for="(key,value) in object">
+            {{key}} {{value}}
+        </li>
+    </ul>
+
+    <!-- v-for on temlpate -->
+    <ul id="appTemplate">
+        <template v-for="item in items">
+            <li>{{ item.msg }}</li>
+            <li class="divider" role="presentation">xx</li>
+        </template>
+    </ul>
+
+    <!-- v-for和v-if同节点 ,v-for的优先级更高-->
+    <ul id="appVforIf">
+        <li v-for="todo in todos" v-if="!todo.isComplete">
+            {{todo.name}}
+        </li>
+    </ul>
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#example',
+            data: {
+                items: [{
+                        message: 'foo'
+                    },
+                    {
+                        message: 'bar'
+                    }
+                ]
+            }
+        });
+
+        var app2 = new Vue({
+            el: '#v-for-object',
+            data: {
+                object: {
+                    firstName: 'felix',
+                    lastName: 'shen',
+                    age: 30
+                }
+            }
+        });
+
+        var app3 = new Vue({
+            el: '#v-for-object2',
+            data: {
+                object: {
+                    firstName: 'felix',
+                    lastName: 'shen',
+                    age: 30
+                }
+            }
+        });
+
+        var appTemplate = new Vue({
+            el: '#appTemplate',
+            data: {
+                items: [{
+                        msg: 'foo'
+                    },
+                    {
+                        msg: 'bar'
+                    }
+                ]
+            }
+        });
+
+        var appVforIf = new Vue({
+            el: '#appVforIf',
+            data: {
+                todos: [{
+                    name: 'learn vue',
+                    isComplete: false
+                }, {
+                    name: 'learn typescript',
+                    isComplete: false
+                }, {
+                    name: 'own a baby',
+                    isComplete: true
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

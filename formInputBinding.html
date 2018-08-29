@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <input v-model="message" placeholder="edit me" />
+        <p>meaasge is {{message}}</p>
+    </div>
+
+    <!-- 针对单选框的绑定 -->
+    <div id="app2">
+        <input type="checkbox" name="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+    </div>
+
+    <!-- 针对下拉框的绑定 -->
+    <div id="app3">
+        <select name="hobbies" id="hobby" v-model="selected">
+            <option>run</option>
+            <option>read</option>
+            <option>hah</option>
+        </select>
+        <span>selected:{{selected}}</span>
+    </div>
+
+    <!-- 获取上面下拉框的选择值 -->
+    <button id="app4" v-on:click="showSelectValue">showSelectValue</button>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#example',
+            data: {
+                message: 'sss'
+            }
+        });
+
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                checked: false
+            }
+        });
+
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                selected: 'run'
+            }
+        });
+
+        var app4 = new Vue({
+            el: '#app4',
+            methods: {
+                showSelectValue: function () {
+                    alert(app3.selected);
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

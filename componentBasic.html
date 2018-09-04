@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <button_counter>
+            </buttonCounter>
+    </div>
+
+
+    <!-- 我们可以看到，当要绑定的属性比较多的时候，一个一个进行手动绑定还是很繁琐的，所以我们后续会有简化写法 -->
+    <div id="myblog">
+        <blog-post v-bind:title='title' v-bind:author="author" v-bind:content="content" v-bind:postdate="postdate"></blog-post>
+    </div>
+
+    <div id="sim-myblog">
+        <sim-blog-post v-bind:post='post'></sim-blog-post>
+    </div>
+
+    <div id="app3">
+        <eve-blog-post v-on:enlarge-text="postFontSize += 0.1"></eve-blog-post>
+    </div>
+
+
+    <script type="text/javascript">
+        //    自定义组件名必须是全部小写，否则会出错
+        //    属性名也得是小写
+        Vue.component('button_counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        });
+
+
+        Vue.component('blog-post', {
+            template: `
+            <div>
+                <h3>{{title}}</h3>
+                <h4>{{author}}</h4>
+                <h4>{{content}}</h4>
+                <h4>{{postdate}}</h4>
+            </div>
+            `,
+            props: ['title', 'author', 'postdate', 'content']
+        });
+
+        // 简化版的blog-post组件
+        Vue.component('sim-blog-post', {
+            template: `
+            <div>
+                <h3>{{post.title}}</h3>
+                <h4>{{post.author}}</h4>
+                <h4>{{post.content}}</h4>
+                <h4>{{post.postdate}}</h4>
+            </div>
+            `,
+            props: ['post']
+        });
+
+
+        var app = new Vue({
+            el: '#example'
+        });
+
+        var blog = new Vue({
+            el: '#myblog',
+            data: {
+                title: 'road to learn vue',
+                author: 'felix.shen',
+                content: 'hello,i am trying to learn vuejs,i hope to be one fullstack developer one day,and can work for myself at home',
+                postdate: '2018-09-04'
+            }
+        });
+
+        var simblog = new Vue({
+            el: '#sim-myblog',
+            data: {
+                post: {
+                    title: 'road to learn vue2',
+                    author: 'felix.shen',
+                    content: 'hello,i am trying to learn vuejs,i hope to be one fullstack developer one day,and can work for myself at home',
+                    postdate: '2018-09-04'
+                }
+            }
+        });
+
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="card.css">
+    
+</head>
+
+<body>
+
+    <div id="app">
+        <profile-card v-bind:profile="profile"></profile-card>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('profile-card', {
+            props: ['profile'],
+            template: `<div class="card c_01">
+            <div class="card_Banner">
+                <div class="card_Avatar"></div>
+            </div>
+            <h3>{{profile.name}}</h3>
+            <a :href="profile.email">email:{{profile.email}}</a>
+            <a>tel:{{profile.phone}}</a>
+            <ul>
+                <a href="https://www.linkedin.com/in/-cbrown-" target="_blank"><i class="fa fa-linkedin" style="font-size:16px"></i></a>
+                <a href="https://www.twitter.com/___cbrown___" target="_blank"><i class="fa fa-twitter" style="font-size:16px"></i></a>
+            </ul>
+        </div>`
+
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                profile: {
+                    name: 'felix.shen',
+                    email: 'felix.shen@zoom.us  ',
+                    phone: '213213'
+                }
+            }
+        });
+    </script>
+</body>
+
+
+</html>
